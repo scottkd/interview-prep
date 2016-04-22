@@ -59,8 +59,10 @@ def cmt_optimized(meeting_times):
   """
   condensed_list = []
 
+  # O(nlogn) step
   sorted_times = sorted(meeting_times)
 
+  # O(n) pass through sorted list and add/merge meetings in condensed_list
   for i in range(len(sorted_times) - 1):
     curr_item = sorted_times[i]
     next_item = sorted_times[i+1]
@@ -69,10 +71,11 @@ def cmt_optimized(meeting_times):
       condensed_list.append(curr_item)  
 
     else:
+      # dynamically edit the sorted_times list so the next_item is the merged time
       sorted_times[i+1] = ( curr_item[0], max(curr_item[1], next_item[1]) )
 
-
     if i == (len(sorted_times) - 1) - 1:
+      # last iteration needs to add the next_item
       condensed_list.append(sorted_times[i+1])  
 
   return condensed_list
