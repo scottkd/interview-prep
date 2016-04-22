@@ -17,13 +17,16 @@
 # No "shorting" - you must buy before you sell. You may not buy and sell in the same time step (at least 1 minute must pass).
 
 def get_max_profit(stock_prices_yesterday):
+	# init max_diff and curr_min using first two values of list
 	max_diff = stock_prices_yesterday[1] - stock_prices_yesterday[0]
 	curr_min = min(stock_prices_yesterday[0], stock_prices_yesterday[1])
 
+	# iterate over list, skipping first two elements that were handled
 	for i in range(2, len(stock_prices_yesterday)):
 		curr_item = stock_prices_yesterday[i]
 		curr_diff = curr_item - curr_min
 		
+		# make any necessary changes to max_diff and curr_min
 		max_diff = max(max_diff, curr_diff)
 		curr_min = min(curr_min, curr_item)
 
