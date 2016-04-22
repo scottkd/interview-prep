@@ -17,6 +17,14 @@
 # No "shorting" - you must buy before you sell. You may not buy and sell in the same time step (at least 1 minute must pass).
 
 def get_max_profit(stock_prices_yesterday):
+	"""
+	returns the max diff of stock prices (considered in chronological order)
+
+	stock_prices_yesterday is list of prices described above in comments
+	"""
+	if len(stock_prices_yesterday) < 2:
+		raise IndexError()
+
 	# init max_diff and curr_min using first two values of list
 	max_diff = stock_prices_yesterday[1] - stock_prices_yesterday[0]
 	curr_min = min(stock_prices_yesterday[0], stock_prices_yesterday[1])
