@@ -14,19 +14,21 @@
 # get_max_profit(stock_prices_yesterday)
 # # returns 6 (buying for $5 and selling for $11)
 
-# No "shorting"—you must buy before you sell. You may not buy and sell in the same time step (at least 1 minute must pass).
-
+# No "shorting" - you must buy before you sell. You may not buy and sell in the same time step (at least 1 minute must pass).
 
 def get_max_profit(stock_prices_yesterday):
-	local_min = stock_prices_yesterday[0], 0
-	local_max = 0, 0
-	max_diff_at_buy_price = []
-	diff = []
-	for i in range(len(stock_prices_yesterday)-1):
-		buy_price = stock_prices_yesterday[i]
-		diff.insert(i, [])
-		for j in range(i+1,len(stock_prices_yesterday)):
-			sell_price = stock_prices_yesterday[j]
-			diff[i].append(sell_price - buy_price)
-		max_diff_at_buy_price.append(max(diff[i]))
-	return max(max_diff_at_buy_price)
+	max_diff = stock_prices_yesterday[1] - stock_prices_yesterday[0]
+	curr_min = min(stock_prices_yesterday[0], stock_prices_yesterday[1])
+
+	for i in range(2, len(stock_prices_yesterday)):
+		curr_item = stock_prices_yesterday[i]
+		curr_diff = curr_item - curr_min
+		
+		max_diff = max(max_diff, curr_diff)
+		curr_min = min(curr_min, curr_item)
+
+	return max_diff
+
+assert get_max_profit([10, 7, 5, 8, 11, 9]) == 6
+assert get_max_profit([10, 9, 7, 6, 4]) == -1
+assert get_max_profit([1, 5, 10, 6, 4]) == 9
