@@ -31,9 +31,9 @@ def contains_cycle(head):
 	s = set()
 	curr = head
 	while curr:
-		if repr(curr) in s:
+		if id(curr) in s:
 			return True
-		s.add(str(repr(curr)))
+		s.add(id(curr))
 		curr = curr.next
 
 	return False
