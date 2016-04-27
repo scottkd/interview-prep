@@ -21,15 +21,6 @@ my_rectangle = {
     'height': 4,
 
 }
-rect1 = {
-    # coordinates of bottom-left corner
-    'left_x': 1,
-    'bottom_y': 5,
-
-    # width and height
-    'width': 10,
-    'height': 4,
-}
 
 Your output rectangle should use this format as well.
 """
