@@ -17,4 +17,4 @@ def db_import_single_thread(in_col_del='\t', in_row_del='\n', out_col_del=',', o
 		# If in_row_del not in chunk, add next chunk.
 			chunk += sys.stdin.read(CHUNK_SIZE)
 			
-db_import()
+db_import_single_thread()
