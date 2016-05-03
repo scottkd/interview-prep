@@ -1,3 +1,4 @@
+import re
 import sys
 from multiprocessing import Pool
 
@@ -13,9 +14,8 @@ def db_import_multi_thread(in_col_del='\t', in_row_del='\n', out_col_del=',', ou
 	pool.join()
 
 def read_chunk(chunk, in_col_del='\t', in_row_del='\n', out_col_del=',', out_row_del='\n'):
-	out_line = chunk.replace(out_row_del, '')								# Remove row delimiters from chunk.
-	out_line = out_line.replace(out_col_del, '')							# Remove col delimiters from chunk.
-	out_line = out_line.replace(in_col_del, out_col_del) + out_row_del		# Format output line with new delimiters.
-	sys.stdout.write(out_line)												# Write line to stdout.
+	out_line = re.sub('[{0}{1}]'.format(out_row_del, out_col_del), '', chunk)	# Remove row, col delimiters from chunk with regex, one pass through data instead of instead of two.
+	out_line = out_line.replace(in_col_del, out_col_del) + out_row_del			# Format output line with new delimiters.
+	sys.stdout.write(out_line)													# Write line to stdout.
 
 db_import_multi_thread()
