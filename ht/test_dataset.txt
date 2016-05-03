@@ -2,7 +2,10 @@ yosemite	california
 arches	utah
 badlands	north dakota
 everglades	miami
-tes\\nting	new\\nline
+tes\
+ting	new\
+line
 	
-tes\\ting	t\\tab
+tes\	ting	t\	tab
 com,ma park	oregon
+testing\\	back\\slash\\
