@@ -29,7 +29,7 @@ def db_import_single_thread(in_col_del='\t', in_row_del='\n', out_col_del=',', o
 					sys.stdout.write(to_write)			# Write row of data
 					to_write = ''
 
-				elif char != backslash:
+				elif char != backslash and char not in (out_row_del, out_col_del):
 					to_write += char					# Non-backslash, Non-delim added to output
 
 			if char != backslash:
