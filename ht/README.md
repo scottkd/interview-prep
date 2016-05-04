@@ -35,5 +35,5 @@ be able to run your unit test with this command:
 	+ Output column and row delimiter removed from output
 	+ Double backslash characters in input -> single backslash character in output
 	+ If there are two consecutive backslashes, the next char doesn't think it is 'escaped' 
-		-Protects against '\' being the last char of field value.
-		-Properly handles multiple backslashes in a row.
+		- Protects against '\' being the last char of field value.
+		- Properly handles multiple backslashes in a row.
