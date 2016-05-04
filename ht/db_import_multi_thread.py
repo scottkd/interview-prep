@@ -1,7 +1,11 @@
+# INVALID SOLUTION DOESN'T PROPERLY ANSWER QUESTION
+
+"""
 import re
 import sys
 from multiprocessing import Pool
 
+CHUNK_SIZE = 500
 NUM_POOLS = 4
 
 def db_import_multi_thread(in_col_del='\t', in_row_del='\n', out_col_del=',', out_row_del='\n'):
@@ -19,3 +23,4 @@ def read_chunk(chunk, in_col_del='\t', in_row_del='\n', out_col_del=',', out_row
 	sys.stdout.write(out_line)													# Write line to stdout.
 
 db_import_multi_thread()
+"""
