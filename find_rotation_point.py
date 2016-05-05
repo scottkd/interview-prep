@@ -21,7 +21,6 @@ Now I have a list of words that are mostly alphabetical, except they start somew
 Write a function for finding the index of the "rotation point," which is where I started working from the beginning of the dictionary. This list is huge (there are lots of words I don't know) so we want to be efficient here.
 '''
 def find_rotation_point(words):
-	'''Implementation assumes there MUST be a rotation in data. words cannot be an order list.'''
 	return find_rotation_helper(words, 0, len(words) - 1)
 
 def find_rotation_helper(words, start, end):
@@ -29,7 +28,9 @@ def find_rotation_helper(words, start, end):
 		if words[start] > words[end]:
 			return end
 		else:
-			return start
+			if end == len(words) - 1:			# Sorted order, return 0 as rotation point
+				return 0
+			return start 						
 
 	mid = (end + start) / 2								# set midpoint
 
@@ -57,7 +58,9 @@ words = [
 w2 = ['b', 'c', 'a']
 
 w3 = ['z', 'a', 'b', 'c', 'd']
+w4 = ['a', 'b', 'c', 'd']
 
 assert find_rotation_point(words) == 5, find_rotation_point(words)
 assert find_rotation_point(w2) == 2, find_rotation_point(w2)
 assert find_rotation_point(w3) == 1, find_rotation_point(w3)
+assert find_rotation_point(w4) == 0, find_rotation_point(w4)
